@@ -24,7 +24,7 @@ class FormatTime extends Component {
     componentWillReceiveProps(nextProps) {
         const {elapsed} = nextProps;
         const sec = elapsed / 1000;
-        const min = sec/60;
+        const min = sec / 60;
         this.setState({
             hour: Math.floor(min/60),
             min: Math.floor(min % 60),
