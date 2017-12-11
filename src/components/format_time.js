@@ -10,11 +10,12 @@ class FormatTime extends Component {
           ms: 0
         };
         this.timerStyle = {
-            display: 'inline-block',
+            display: 'table-cell',
             position: 'relative',
-            left: "50%",
-            transform: 'translate(-50%)',
-            width: "50%"
+            width: "100vw",
+            "font-family": "HelveticaNeue-UltraLight, Helvetica, Arial",
+            "font-size": "10vmin",
+            "text-align": "center"
         };
     }
 
