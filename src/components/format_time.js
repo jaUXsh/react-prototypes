@@ -9,16 +9,13 @@ class FormatTime extends Component {
           sec: 0,
           ms: 0
         };
-
-    }
-
-    render() {
-        const { hour, min, sec, ms} = this.state;
-        return (
-            <div>
-                {hour}:{min}:{sec}.{ms}
-            </div>
-        )
+        this.timerStyle = {
+            display: 'inline-block',
+            position: 'relative',
+            left: "50%",
+            transform: 'translate(-50%)',
+            width: "295px"
+        };
     }
 
     componentWillReceiveProps(nextProps) {
@@ -32,6 +29,15 @@ class FormatTime extends Component {
             ms: Math.floor(elapsed % 100)
         })
     }
+
+    render() {
+        const { hour, min, sec, ms} = this.state;
+        return (
+            <div style={this.timerStyle}>{hour}:{min}:{sec}.{ms}</div>
+        )
+    }
+
+
 }
 
 export default FormatTime;
