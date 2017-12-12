@@ -15,6 +15,10 @@ class Stopwatch extends Component {
         this.update = this.update.bind(this);
         this.reset  = this.reset.bind(this);
         this.timedMessage = this.timedMessage.bind(this);
+
+        this.textStyle = {
+            fontSize: "4.5vmin"
+        }
     }
 
     start() {
@@ -82,7 +86,7 @@ class Stopwatch extends Component {
             <div className="jumbotron">
                 <h1 className="display-3"><Time elapsed={elapsed} /></h1>
                 <hr className="my-3"/>
-                <p className="lead text-center">{message}</p>
+                <p className="lead text-center" style={this.textStyle}>{message}</p>
                 <p className="text-center">
                     <button className="btn btn-outline-success mx-3" onClick={this.start}>Start</button>
                     <button className="btn btn-outline-danger mx-3" onClick={this.stop}>Stop</button>
