@@ -8,15 +8,18 @@ class Stopwatch extends Component {
             status: 'stopped',
             start: null,
             elapsed: 0,
+            message: ''
         };
         this.start = this.start.bind(this);
         this.stop = this.stop.bind(this);
         this.update = this.update.bind(this);
         this.reset  = this.reset.bind(this);
+        this.timedMessage = this.timedMessage.bind(this);
     }
 
     start() {
         const {start, elapsed} = this.state;
+        console.log(elapsed);
         let newStart = new Date().getTime();
         if(start) {
             newStart -= elapsed
@@ -38,13 +41,15 @@ class Stopwatch extends Component {
         this.setState({
             status: 'stopped',
             start: null,
-            elapsed: 0
+            elapsed: 0,
+            message: ''
         })
     }
 
     update() {
         let {status, start} = this.state;
         if(status === 'running') {
+            this.timedMessage();
             this.setState({
                 elapsed: new Date().getTime() - start
             });
@@ -52,13 +57,32 @@ class Stopwatch extends Component {
         }
     }
 
+    timedMessage() {
+        let {elapsed, message} = this.state;
+        if (elapsed < 30000) {
+            this.setState({
+                message: "♨Blooming♨"
+            });
+        } else {
+            this.setState({
+                message: "Bloomed ✔ start brewin' ☕ !"
+            });
+        }
+        if (elapsed >= 150000) {
+            this.setState({
+                message: "Enjoy your ☕ !"
+            });
+        }
+    }
+
+
     render() {
-        const {elapsed, status} = this.state;
+        const {elapsed, message} = this.state;
         return (
             <div className="jumbotron">
                 <h1 className="display-3"><Time elapsed={elapsed} /></h1>
                 <hr className="my-3"/>
-                <p className="lead text-center">{status}</p>
+                <p className="lead text-center">{message}</p>
                 <p className="text-center">
                     <button className="btn btn-outline-success mx-3" onClick={this.start}>Start</button>
                     <button className="btn btn-outline-danger mx-3" onClick={this.stop}>Stop</button>

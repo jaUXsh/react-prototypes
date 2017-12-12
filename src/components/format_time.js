@@ -13,9 +13,9 @@ class FormatTime extends Component {
             display: 'table-cell',
             position: 'relative',
             width: "100vw",
-            "font-family": "HelveticaNeue-UltraLight, Helvetica, Arial",
-            "font-size": "10vmin",
-            "text-align": "center"
+            fontFamily: "HelveticaNeue-UltraLight, Helvetica, Arial",
+            fontSize: "10vmin",
+            textAlign: "center"
         };
     }
 
@@ -40,9 +40,9 @@ class FormatTime extends Component {
     }
 
     render() {
-        const { hour, min, sec, ms} = this.state;
+        const { min, sec, ms} = this.state;
         return (
-            <div style={this.timerStyle}>{this.leadingZero(hour)}:{this.leadingZero(min)}:{this.leadingZero(sec)}.{this.trailingZero(ms)}</div>
+            <div style={this.timerStyle}>{this.leadingZero(min)}:{this.leadingZero(sec)}.{this.trailingZero(ms)}</div>
         )
     }
 
